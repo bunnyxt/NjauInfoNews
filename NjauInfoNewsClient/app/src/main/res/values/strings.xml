@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">NjauInfoNewsClient</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">南农信息院新闻客户端</string>
+    <string name="nav_header_subtitle">by.bunnyxt</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">首页</string>
+    <string name="menu_latest_news">最新新闻</string>
+    <string name="menu_category_news">分类新闻</string>
+    <string name="menu_search_news">新闻搜索</string>
+</resources>
