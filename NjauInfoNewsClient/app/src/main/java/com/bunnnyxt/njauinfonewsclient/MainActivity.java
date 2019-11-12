@@ -2,9 +2,6 @@ package com.bunnnyxt.njauinfonewsclient;
 
 import android.os.Bundle;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -12,6 +9,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.bunnnyxt.njauinfonewsclient.db.Operation;
+import com.bunnnyxt.njauinfonewsclient.db.models.News;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -20,6 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.Button;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,6 +53,21 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+
+        Button button1 = findViewById(R.id.button_1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        List<News> newsList = Operation.getLatestNews(3);
+
+                    }
+                }).start();
+            }
+        });
     }
 
     @Override
