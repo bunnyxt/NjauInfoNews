@@ -22,7 +22,7 @@ public class LatestNewsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         latestNewsViewModel =
                 ViewModelProviders.of(this).get(LatestNewsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_latestnews, container, false);
         final TextView textView = root.findViewById(R.id.text_gallery);
         latestNewsViewModel.getText().observe(this, new Observer<String>() {
             @Override

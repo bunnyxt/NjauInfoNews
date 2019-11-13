@@ -22,7 +22,7 @@ public class CategoryNewsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         categoryNewsViewModel =
                 ViewModelProviders.of(this).get(CategoryNewsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        View root = inflater.inflate(R.layout.fragment_categorynews, container, false);
         final TextView textView = root.findViewById(R.id.text_slideshow);
         categoryNewsViewModel.getText().observe(this, new Observer<String>() {
             @Override

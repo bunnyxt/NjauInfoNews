@@ -22,7 +22,7 @@ public class SearchNewsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         searchNewsViewModel =
                 ViewModelProviders.of(this).get(SearchNewsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
+        View root = inflater.inflate(R.layout.fragment_searchnews, container, false);
         final TextView textView = root.findViewById(R.id.text_tools);
         searchNewsViewModel.getText().observe(this, new Observer<String>() {
             @Override
