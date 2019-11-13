@@ -10,6 +10,10 @@
         select * from news;
     </select>
 
+    <select id="queryLatestNews" resultType="com.bunnyxt.njauinfonewsspider.model.News">
+        select * from news where tid = #{0} order by ctime desc limit #{1};
+    </select>
+
     <insert id="insertNews" parameterType="com.bunnyxt.njauinfonewsspider.model.News">
         insert into news (
             title, author, ctime, content, tid, iid, sid, nid, pid
