@@ -158,6 +158,38 @@ public class News {
         return "http://info.njau.edu.cn/Details/Index/" + iid + "/" + sid + "/" + nid + "/" + pid;
     }
 
+    public String getCategory() {
+        String categoty = "未知分类";
+        switch (tid) {
+            case 1:
+                categoty = "教研动态";
+                break;
+            case 2:
+                categoty = "学生动态";
+                break;
+            case 3:
+                categoty = "通知公告";
+                break;
+            case 4:
+                categoty = "就业实践";
+                break;
+            case 5:
+                categoty = "图片新闻";
+                break;
+            case 6:
+                categoty = "其他";
+                break;
+            default:
+                break;
+        }
+        return categoty;
+    }
+
+    public String getCtimeString() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return simpleDateFormat.format(ctime);
+    }
+
     @Override
     public String toString() {
         return "News\nid: " + id +
