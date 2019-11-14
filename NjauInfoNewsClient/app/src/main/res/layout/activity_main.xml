@@ -22,4 +22,15 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_1"
+            android:text="button 1"/>
+    </LinearLayout>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
