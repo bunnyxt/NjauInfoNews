@@ -162,13 +162,13 @@ public class News {
         String categoty = "未知分类";
         switch (tid) {
             case 1:
-                categoty = "教研动态";
+                categoty = "通知公告";
                 break;
             case 2:
-                categoty = "学生动态";
+                categoty = "教研动态";
                 break;
             case 3:
-                categoty = "通知公告";
+                categoty = "学生动态";
                 break;
             case 4:
                 categoty = "就业实践";
