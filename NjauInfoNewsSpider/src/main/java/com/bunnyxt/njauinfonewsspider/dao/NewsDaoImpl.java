@@ -22,6 +22,10 @@ public class NewsDaoImpl implements NewsDao {
         return this.sqlSession.selectList("NewsDao.queryNewsAll");
     }
 
+    public List<News> queryLatestNews(int tid, int limit) {
+        return this.sqlSession.selectList("NewsDao.queryLatestNews");
+    }
+
     public void insertNews(News news) {
         this.sqlSession.insert("NewsDao.insertNews", news);
     }

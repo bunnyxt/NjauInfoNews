@@ -17,10 +17,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class AllNewsSpider {
+public class AddNewsSpider {
 
     private static String getTypeUrlPath(int tid, int page) {
         return "http://info.njau.edu.cn/TypeNews/ajaxContent/" + tid + "/" + page;
@@ -68,9 +69,27 @@ public class AllNewsSpider {
             e.printStackTrace();
         }
 
+
         for (int tid = 1; tid <= 6; tid++) {
+            // get latest news
+            List<Integer> latestNewsNidList = new ArrayList<Integer>();
+            int latestNewsCount = 0;
+            try {
+                List<News> latestNewsList = null;
+                Map<String, Integer> parameters = new java.util.HashMap<String, Integer>();
+                parameters.put("0", tid);
+                parameters.put("1", 20);
+                latestNewsList = sqlSession.selectList("queryLatestNews", parameters);
+                for (int i = 0; i < latestNewsList.size(); i++) {
+                    latestNewsNidList.add(latestNewsList.get(i).getNid());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
             int page = 0;
-            while (true) {
+            boolean goon = true;
+            while (goon) {
                 String typeUrlPath = getTypeUrlPath(tid, page);
                 try {
                     HttpGet httpGet = new HttpGet(typeUrlPath);
@@ -84,6 +103,19 @@ public class AllNewsSpider {
                             break;
                         } else {
                             for (News news : newsList) {
+                                // check nid first
+                                int nid = news.getNid();
+                                if (latestNewsNidList.contains(nid)) {
+                                    latestNewsCount++;
+                                    System.out.println("News with nid " + nid + " already added, skip now. count " + latestNewsCount);
+                                    if (latestNewsCount >= 10) {
+                                        System.out.println("10 already added news visited, now break.");
+                                        goon = false;
+                                        break;
+                                    } else {
+                                        continue;
+                                    }
+                                }
                                 // get news author, ctime, content from url
                                 String newsUrlPath = getNewsUrlPath(news.getIid(), news.getSid(),
                                         news.getNid(), news.getPid());

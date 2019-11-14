@@ -10,6 +10,8 @@ public interface NewsDao {
 
     public List<News> queryNewsAll();
 
+    public List<News> queryLatestNews(int tid, int limit);
+
     public void insertNews(News news);
 
     public void updateNews(News news);
