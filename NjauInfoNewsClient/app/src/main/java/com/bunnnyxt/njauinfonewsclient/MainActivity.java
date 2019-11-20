@@ -18,7 +18,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.bunnnyxt.njauinfonewsclient.db.Operation;
-import com.bunnnyxt.njauinfonewsclient.db.models.News;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
